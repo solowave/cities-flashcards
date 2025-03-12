@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
+import { LivesTracker } from "./LivesTracker";
 
 export const AppLayout = {
   Root: ({ children }) => (
     <div className="flex flex-col w-full h-dvh">{children}</div>
   ),
-  Header: ({ title, citiesNum, isClosable }) => {
+  Header: ({ title, citiesNum, isClosable, hasLives = false }) => {
     const navigate = useNavigate();
     return (
-      <section className="flex items-center gap-3 px-3 py-2 border-b-1 border-zinc-200 dark:border-zinc-800 ">
+      <section className="flex items-center gap-3 px-3 py-2 border-b-1 border-zinc-200 dark:border-zinc-800">
         <button
           onClick={() => navigate(-1)}
           className="size-10 flex items-center justify-center cursor-pointer text-zinc-700 dark:text-zinc-300"
@@ -42,12 +43,13 @@ export const AppLayout = {
             </svg>
           )}
         </button>
-        <div>
+        <div className="grow">
           <h1 className="text-lg font-bold">{title}</h1>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             {citiesNum} cities
           </p>
         </div>
+        {hasLives ? <LivesTracker /> : ""}
       </section>
     );
   },

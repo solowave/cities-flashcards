@@ -29,6 +29,7 @@ function LearnContent() {
         title={`City flags – ${countryName}`}
         citiesNum={totalCount}
         isClosable
+        hasLives
       />
       <AppLayout.Body className="flex flex-col items-center">
         <div className="flex flex-col items-center justify-center gap-6 max-w-96 h-full mt-16 mb-8">
