@@ -106,7 +106,7 @@ const FlashCard = ({ item, index, isInteractive }) => {
 
   return (
     <motion.div
-      className="col-start-1 row-start-1 w-full h-full cursor-grab active:cursor-grabbing"
+      className={`col-start-1 row-start-1 w-full h-full ${isInteractive ? 'cursor-grab active:cursor-grabbing' : ''}`}
       variants={cardVariants}
       initial={position}
       animate={{
@@ -126,13 +126,14 @@ const FlashCard = ({ item, index, isInteractive }) => {
       dragElastic={0.5}
       onDragEnd={handleDragEnd}
       onDrag={(event, info) => {
+        if (!isInteractive) return;
         if (info.offset.y > 40 && !isAnswerRevealed) {
           setShowBtnVariant("primary");
         } else {
           setShowBtnVariant("outline");
         }
       }}
-      whileTap={{ scale: 0.96 }}
+      whileTap={isInteractive ? { scale: 0.96 } : undefined}
     >
       <Card className="rounded-2xl w-full h-full">
         <motion.div

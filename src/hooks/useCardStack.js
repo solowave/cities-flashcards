@@ -7,6 +7,18 @@ import { useState } from "react";
  * @param {boolean} options.interactive - Whether cards can be interacted with (swiped)
  */
 export function useCardStack(items, { interactive = true } = {}) {
+  // Shuffle array using Fisher-Yates algorithm
+  const shuffle = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Track shuffled items
+  const [shuffledItems, setShuffledItems] = useState(() => shuffle(items));
   // Track current position in the stack
   const [currentIndex, setCurrentIndex] = useState(0);
   // Track if answer is revealed for current card
@@ -17,7 +29,7 @@ export function useCardStack(items, { interactive = true } = {}) {
   const [ShowBtnVariant, setShowBtnVariant] = useState("outline");
 
   // Get current visible cards (set to 4 for stack effect)
-  const visibleItems = items.slice(currentIndex, currentIndex + 4);
+  const visibleItems = shuffledItems.slice(currentIndex, currentIndex + 4);
 
   const revealAnswer = () => setIsAnswerRevealed(true);
 
@@ -32,6 +44,7 @@ export function useCardStack(items, { interactive = true } = {}) {
   };
 
   const stackRestart = () => {
+    setShuffledItems(shuffle(items));
     setCurrentIndex(0);
     setIsStackComplete(false);
   };

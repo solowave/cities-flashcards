@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { LivesTracker } from "./LivesTracker";
+import { useQuizContext } from "../contexts/QuizContext";
 
 export const AppLayout = {
   Root: ({ children }) => (
@@ -8,6 +9,17 @@ export const AppLayout = {
   ),
   Header: ({ title, citiesNum, isClosable, hasLives = false }) => {
     const navigate = useNavigate();
+    let quizLives = 3;
+    
+    try {
+      const quizContext = useQuizContext();
+      if (quizContext && quizContext.lives !== undefined) {
+        quizLives = quizContext.lives;
+      }
+    } catch (error) {
+      // If not in QuizContext, use default value
+    }
+    
     return (
       <section className="flex items-center gap-3 px-3 py-2 border-b-1 border-zinc-200 dark:border-zinc-800">
         <button
@@ -49,7 +61,7 @@ export const AppLayout = {
             {citiesNum} cities
           </p>
         </div>
-        {hasLives ? <LivesTracker /> : ""}
+        {hasLives ? <LivesTracker lives={quizLives} /> : ""}
       </section>
     );
   },
