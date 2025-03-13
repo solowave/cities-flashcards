@@ -14,7 +14,7 @@ export function useCardStack(items, { interactive = true } = {}) {
   // Track if we've reached the end of the stack
   const [isStackComplete, setIsStackComplete] = useState(false);
   // Track show answer button variant
-  const [showAnswerVariant, setShowAnswerVariant] = useState("outline");
+  const [ShowBtnVariant, setShowBtnVariant] = useState("outline");
 
   // Get current visible cards (set to 4 for stack effect)
   const visibleItems = items.slice(currentIndex, currentIndex + 4);
@@ -49,8 +49,8 @@ export function useCardStack(items, { interactive = true } = {}) {
     revealAnswer,
     nextItem,
     setIsAnswerRevealed,
-    showAnswerVariant,
-    setShowAnswerVariant,
+    ShowBtnVariant,
+    setShowBtnVariant,
     stackRestart,
   };
 }

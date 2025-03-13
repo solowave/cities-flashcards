@@ -5,12 +5,8 @@ import { useContext, useEffect } from "react";
 import { FlagsDataContext } from "../contexts/FlagsDataContext";
 
 export function Dashboard() {
-  const { uniqueCountries, cities } = useCountryData();
+  const { uniqueCountries } = useCountryData();
   const { flagsData } = useContext(FlagsDataContext);
-
-  useEffect(() => {
-    console.log(uniqueCountries.sort());
-  }, []);
 
   return (
     <>

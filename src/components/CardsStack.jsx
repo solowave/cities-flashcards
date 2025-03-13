@@ -66,12 +66,8 @@ const cardVariants = {
  * Individual flashcard component with animations
  */
 const FlashCard = ({ item, index, isInteractive }) => {
-  const {
-    nextItem,
-    isAnswerRevealed,
-    setIsAnswerRevealed,
-    setShowAnswerVariant,
-  } = useCards();
+  const { nextItem, isAnswerRevealed, setIsAnswerRevealed, setShowBtnVariant } =
+    useCards();
 
   const [exitX, setExitX] = useState(0);
 
@@ -96,7 +92,7 @@ const FlashCard = ({ item, index, isInteractive }) => {
     if (currentY > 40) {
       setIsAnswerRevealed(true);
     }
-    setShowAnswerVariant("outline");
+    setShowBtnVariant("outline");
   };
 
   const position =
@@ -131,9 +127,9 @@ const FlashCard = ({ item, index, isInteractive }) => {
       onDragEnd={handleDragEnd}
       onDrag={(event, info) => {
         if (info.offset.y > 40 && !isAnswerRevealed) {
-          setShowAnswerVariant("primary");
+          setShowBtnVariant("primary");
         } else {
-          setShowAnswerVariant("outline");
+          setShowBtnVariant("outline");
         }
       }}
       whileTap={{ scale: 0.96 }}

@@ -91,9 +91,7 @@ export const List = {
         </Card>
         <div className="flex flex-col grow">
           <h3 className="line-clamp-1">{title}</h3>
-          <p className='text-sm text-zinc-600 dark:text-zinc-400"'>
-            {subtitle}
-          </p>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">{subtitle}</p>
         </div>
         <div className="text-zinc-700 dark:text-zinc-300">
           <svg

@@ -17,7 +17,7 @@ function LearnContent() {
     totalCount,
     isStackComplete,
     isAnswerRevealed,
-    showAnswerVariant,
+    ShowBtnVariant,
     revealAnswer,
     nextItem,
     stackRestart,
@@ -36,12 +36,10 @@ function LearnContent() {
             <>
               <h1 className="text-3xl">Stack end</h1>
               <div className="flex flex-col gap-2 w-3xs">
-                <Button className="uppercase" to="/" variant="outline">
+                <Button to="/" variant="outline">
                   Main menu
                 </Button>
-                <Button className="uppercase" onClick={stackRestart}>
-                  Replay
-                </Button>
+                <Button onClick={stackRestart}>Replay</Button>
               </div>
             </>
           ) : (
@@ -54,9 +52,9 @@ function LearnContent() {
             <Button
               className="z-10 w-full max-w-3xs"
               onClick={isAnswerRevealed ? nextItem : revealAnswer}
-              variant={isAnswerRevealed ? "primary" : showAnswerVariant}
+              variant={isAnswerRevealed ? "primary" : ShowBtnVariant}
             >
-              {isAnswerRevealed ? "NEXT CITY" : "SHOW ANSWER"}
+              {isAnswerRevealed ? "Next city" : "Show answer"}
             </Button>
           )}
         </div>
