@@ -11,7 +11,9 @@ export default function FlagsDataProvider({ children }) {
   useEffect(() => {
     async function fetchFlagsData() {
       try {
-        const response = await fetch("/country-city-flags.json");
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}country-city-flags.json`
+        );
         const data = await response.json();
         setFlagsData(data);
       } catch (error) {
