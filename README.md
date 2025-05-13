@@ -1,6 +1,6 @@
 # CityFlags | Browse, learn and quiz flags knowledge
 
-This project is a interactive SPA that allows users to interact with the flags of various cities for a given country. Built using React and Vite, it features two main modes: **Learn**, where users can study the flags, and **Quiz**, where users can test their knowledge. The application is designed mobile-first with responsive user experience in mind.
+Flashcards game that allows users to play with the flags of cities for a given country. Built using React and Vite, it features two main modes: **Learn**, where users can study the flags, and **Quiz**, where users can test their knowledge. The application is designed mobile-first with responsive user experience in mind.
 
 ## Features
 
